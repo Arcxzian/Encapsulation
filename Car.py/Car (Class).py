@@ -37,4 +37,24 @@ class Car:
         self.__speed += 5
         self.__fuel -= self.FUEL_PER_ACCEL
         self.__fuel = max(self.__fuel, 0)
+        self.__check_fuel_warings()
+
+    def brake(self):
+        if self.__speed == 0:
+            print("The car is already stopped.")
+            return
+        self.__speed = max(self.__speed, - 5.0)
+        self.speed -= self.FUEL_PER_BREAK
+        self.__fuel = max(self.__fuel, 0)
+        self.__check_fuel_warnings()
+    
+    def refuel(self, liters):
+        if liters <= 0:
+            print("Enter a positive amount of fuel")
+            return
+        space = self.FUEL_CAPACITY - self.__fuel
+        added = min(liters, space)
+        self.__fuel += added
+        print(f"Refueled {added:.1f} L - Tank: {self.__fuel:.1f}/{self.FUEL_CAPACITY}L")
+
         
