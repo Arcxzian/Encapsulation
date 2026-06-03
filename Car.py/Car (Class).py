@@ -83,6 +83,6 @@ class Car:
   │  Speed : {self.__speed:>3} mph  [{speed_indicator}]   │
   │  Fuel  : {fuel_bar} {self.__fuel:>5.1f}L  │
   └─────────────────────────────────┘""")
-        def __fuel_bar(self): 
+    def __fuel_bar(self): 
             filled = int((self.__fuel / self.FUEL_CAPACITY) * 10)
             return "[" + "█" * filled + "░" * (10 - filled) + "]"
