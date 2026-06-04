@@ -37,14 +37,14 @@ class Car:
         self.__speed += 5
         self.__fuel -= self.FUEL_PER_ACCEL
         self.__fuel = max(self.__fuel, 0)
-        self.__check_fuel_warings()
+        self.__check_fuel_warnings()
 
     def brake(self):
         if self.__speed == 0:
             print("The car is already stopped.")
             return
-        self.__speed = max(self.__speed, - 5.0)
-        self.speed -= self.FUEL_PER_BREAK
+        self.__speed = max(self.__speed, - 5, 0)
+        self.__speed -= self.FUEL_PER_BREAK
         self.__fuel = max(self.__fuel, 0)
         self.__check_fuel_warnings()
     
@@ -71,7 +71,7 @@ class Car:
         elif pct <= 20 and "low_fuel" not in self.__warnings:
             print(f"LOW FUEL WARNING! Only {self.__fuel:.1f}L remaining ({pct:.0f}%).")
             self.__warnings.append("low_fuel")
-        elif pct <= 20 and "low_fuel" in self.__warnings:
+        elif pct > 20 and "low_fuel" in self.__warnings:
             self.__warnings.remove("low_fuel")
     
     def status(self):
