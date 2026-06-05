@@ -71,4 +71,26 @@ class Pet:
         self.__age += 1
         print(f"  🎂 Happy Birthday, {self.__name}! Now {self.__age} year(s) old.")
 
+        def display_profile(self):
+        tricks_str = ', '.join(self.__tricks) if self.__tricks else 'None yet'
+        emoji = self.__get_emoji()
+        print(f"""
+  ┌──────────────────────────────────────┐
+  │  {emoji}  PET PROFILE                      │
+  ├──────────────────────────────────────┤
+  │  Name    : {self.__name:<27} │
+  │  Type    : {self.__animal_type:<27} │
+  │  Age     : {str(self.__age) + ' year(s)':<27} │
+  │  Health  : {self.__health_status:<27} │
+  │  Tricks  : {tricks_str:<27} │
+  └──────────────────────────────────────┘""")
+
+    def __get_emoji(self):
+        emojis = {
+            'Dog': '🐶', 'Cat': '🐱', 'Bird': '🐦',
+            'Rabbit': '🐰', 'Fish': '🐟', 'Hamster': '🐹', 'Turtle': '🐢'
+        }
+        return emojis.get(self.__animal_type, '🐾')
+
+
 
